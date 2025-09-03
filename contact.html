@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brew Haven | Contact</title>
+  <meta name="description" content="Contact Brew Haven. Send a message, check hours, and find our Hyderabad, India location." />
+  <style>@font-face { font-family: 'Inter'; src: url('#') format('woff2'); }</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{body:['Inter','system-ui']}}}}</script>
+</head>
+<body class="bg-amber-50 text-gray-800">
+  <header class="w-full fixed top-0 left-0 right-0 bg-white/80 backdrop-filter backdrop-blur-lg shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2" aria-label="Brew Haven Home">
+        <span class="text-xl font-serif" style="font-family: 'ElegantSerif', serif;">Brew Haven</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-gray-700">Home</a>
+        <a href="menu.html" class="text-gray-700">Menu</a>
+        <a href="contact.html" class="text-gray-700">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-28 pb-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section aria-label="Contact" class="reveal">
+      <h1 class="text-3xl font-serif mb-4" style="font-family: 'ElegantSerif', serif;">Contact Us</h1>
+      <p class="mb-6">We'd love to hear from you. Reach out with any questions, event inquiries, or feedback.</p>
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Message sent (mock).');">
+        <input type="text" placeholder="Your name" required class="p-3 rounded-md border border-gray-300" />
+        <input type="email" placeholder="Email" required class="p-3 rounded-md border border-gray-300" />
+        <textarea placeholder="Message" rows="4" class="md:col-span-2 p-3 rounded-md border border-gray-300"></textarea>
+        <button type="submit" class="md:col-span-2 bg-amber-600 text-white px-4 py-2 rounded-md">Send Message</button>
+      </form>
+    </section>
+
+    <!-- Interactive Map (Hyderabad, India placeholder) -->
+    <section class="mt-8 reveal" aria-label="Map">
+      <h2 class="text-2xl font-serif" style="font-family: 'ElegantSerif', serif;">Find Us</h2>
+      <div class="mt-4 border border-amber-100 rounded-lg overflow-hidden h-96">
+        <iframe src="https://maps.google.com/maps?q=Hyderabad%2C%20India&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0;width:100%;height:100%;" allowfullscreen="" aria-label="Map of Brew Haven Hyderabad" title="Brew Haven Hyderabad Map"></iframe>
+      </div>
+      <p class="mt-2 text-sm">Address (placeholder): 123 Main Street, Hyderabad, India</p>
+    </section>
+
+    <!-- Hours -->
+    <section class="mt-6 reveal" aria-label="Hours">
+      <h3 class="text-xl font-semibold" style="font-family: 'Inter', sans-serif;">Business Hours</h3>
+      <ul class="mt-2 text-sm space-y-1">
+        <li>Mon-Fri: 7:00 AM – 9:00 PM</li>
+        <li>Sat-Sun: 8:00 AM – 11:00 PM</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="bg-stone-800 text-gray-300 pt-8 pb-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      © 2025 Brew Haven. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    // simple reveal on load for content below hero
+    document.addEventListener('DOMContentLoaded', () => {
+      const els = document.querySelectorAll('.reveal');
+      els.forEach(el => {
+        el.style.opacity = 1;
+      });
+    });
+  </script>
+</body>
+</html>
