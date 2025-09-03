@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brew Haven | Crafting Moments</title>
+  <meta name="description" content="Brew Haven is a warm, artisanal coffee shop offering handcrafted coffees, teas, and pastries in a cozy, modern setting." />
+
+  <!-- Placeholder fonts (load all fonts) -->
+  <style>
+    @font-face { font-family: 'Inter'; src: url('#') format('woff2'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Inter'; src: url('#') format('woff2'); font-weight: 700; font-style: normal; }
+    @font-face { font-family: 'ElegantSerif'; src: url('#') format('woff2'); font-weight: 400; font-style: normal; }
+  </style>
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            body: ['Inter', 'ui-sans-serif', 'system-ui'],
+            serif: ['ElegantSerif', 'Georgia', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  
+  <!-- Swiper (for gallery) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Page load and scroll animations -->
+  <script>
+    // Page load fade-in
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.remove('opacity-0');
+      document.body.classList.add('opacity-100');
+    });
+
+    // Simple intersection observer for reveal animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const faders = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-6');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      faders.forEach(el => observer.observe(el));
+    });
+  </script>
+</head>
+<body class="min-h-screen bg-amber-50 text-gray-800 transition-opacity duration-700 opacity-0"> 
+  <!-- Header (Persistent nav) -->
+  <header class="w-full fixed top-0 left-0 right-0 bg-white/80 backdrop-filter backdrop-blur-lg shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <!-- Placeholder Logo -->
+      <a href="index.html" class="flex items-center gap-2" aria-label="Brew Haven Home">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="text-emerald-700">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop stop-color="#b45309" />
+              <stop offset="1" stop-color="#d97706" />
+            </linearGradient>
+          </defs>
+          <path d="M6 7h6a4 4 0 014 4v6" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M4 11h6a2 2 0 012 2v4" stroke="url(#g)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="15" cy="6" r="3" fill="url(#g)"/>
+        </svg>
+        <span class="text-xl font-serif text-stone-800 tracking-tight" style="font-family: 'ElegantSerif', serif;">Brew Haven</span>
+      </a>
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-6 font-medium" aria-label="Main">
+        <a class="text-gray-700 hover:text-amber-800" href="index.html">Home</a>
+        <a class="text-gray-700 hover:text-amber-800" href="menu.html">Menu</a>
+        <a class="text-gray-700 hover:text-amber-800" href="about.html">About</a>
+        <a class="text-gray-700 hover:text-amber-800" href="contact.html">Contact</a>
+        <a class="text-gray-700 hover:text-amber-800" href="cart.html">Cart</a>
+      </nav>
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-button" class="md:hidden text-gray-700" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90">
+      <a class="block px-4 py-2 text-sm" href="index.html">Home</a>
+      <a class="block px-4 py-2 text-sm" href="menu.html">Menu</a>
+      <a class="block px-4 py-2 text-sm" href="about.html">About</a>
+      <a class="block px-4 py-2 text-sm" href="contact.html">Contact</a>
+      <a class="block px-4 py-2 text-sm" href="cart.html">Cart</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="pt-20 w-full">
+    <!-- HERO -->
+    <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden" aria-label="Hero">
+      <img src="https://pixabay.com/get/g0348dc39891fadcfe1b1f608ef3f23ee099a218b924cffb8c725e8da8a879123d0e80bbe8f93e57b6fb54a6f7e24acaa79f6dab963e0134f1d7ac936bf8ba45f_640.jpg" alt="Latte art in a cup" class="absolute inset-0 w-full h-full object-cover filter saturate-110" />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-black/20"></div>
+      <div class="relative z-10 text-center px-4 py-20 md:py-28">
+        <h1 class="text-4xl md:text-6xl font-serif text-amber-50 leading-tight drop-shadow-lg reveal" style="font-family: 'ElegantSerif', serif;">
+          Crafting Moments, One Cup at a Time.
+        </h1>
+        <p class="mt-4 text-amber-100 text-lg md:text-xl max-w-2xl mx-auto reveal" style="font-family: 'Inter', sans-serif;">
+          Welcome to Brew Haven — a modern, artisanal coffeehouse where warmth meets craft. Enjoy carefully sourced beans, hand-poured beverages, and a cozy space to linger.
+        </p>
+        <a href="menu.html" class="inline-block mt-6 bg-amber-700 hover:bg-amber-800 text-white font-semibold py-3 px-6 rounded-full shadow-lg transition-colors duration-300 reveal" style="font-family: 'Inter', sans-serif;">
+          Explore Menu
+        </a>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16" aria-label="Testimonials">
+      <h2 class="text-2xl md:text-3xl font-serif text-center mb-8 reveal" style="font-family: 'ElegantSerif', serif;">What our customers say</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Testimonial 1 -->
+        <blockquote class="bg-white rounded-xl p-6 shadow-md border border-amber-100 reveal" style="font-family: 'Inter', sans-serif;">
+          <p class="text-sm md:text-base">"Best latte in town. The latte art is a piece of art and the vibe is so warm."</p>
+          <div class="mt-3 flex items-center gap-2 text-yellow-500" aria-label="Rating">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.147 3.53a1 1 0 00.95.69h3.71c.969 0 1.371 1.24.588 1.81l-3.003 2.18a1 1 0 00-.364 1.118l1.146 3.53c.3.921-.755 1.688-1.539 1.118L10 12.347l-3.596 2.408c-.784.57-1.84-.197-1.539-1.118l1.146-3.53a1 1 0 00-.364-1.118L1.61 8.056c-.783-.57-.38-1.81.588-1.81h3.71a1 1 0 00.95-.69l1.147-3.53z"/></svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.147 3.53a1 1 0 00.95.69h3.71c.969 0 1.371 1.24.588 1.81l-3.003 2.18a1 1 0 00-.364 1.118l1.146 3.53c.3.921-.755 1.688-1.539 1.118L10 12.347l-3.596 2.408c-.784.57-1.84-.197-1.539-1.118l1.146-3.53a1 1 0 00-.364-1.118L1.61 8.056c-.783-.57-.38-1.81.588-1.81h3.71a1 1 0 00.95-.69l1.147-3.53z"/></svg>
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.147 3.53a1 1 0 00.95.69h3.71c.969 0 1.371 1.24.588 1.81l-3.003 2.18a1 1 0 00-.364 1.118l1.146 3.53c.3.921-.755 1.688-1.539 1.118L10 12.347l-3.596 2.408c-.784.57-1.84-.197-1.539-1.118l1.146-3.53a1 1 0 00-.364-1.118L1.61 8.056c-.783-.57-.38-1.81.588-1.81h3.71a1 1 0 00.95-.69l1.147-3.53z"/></svg>
+          </div>
+        </blockquote>
+        <!-- Testimonial 2 -->
+        <blockquote class="bg-white rounded-xl p-6 shadow-md border border-amber-100 reveal" style="font-family: 'Inter', sans-serif;">
+          <p class="text-sm md:text-base">"Cozy corner with excellent single-origin coffees. A must-visit for coffee lovers."</p>
+          <div class="mt-3 flex items-center gap-2 text-yellow-500" aria-label="Rating">
+            <span>★★★★☆</span>
+          </div>
+        </blockquote>
+        <!-- Testimonial 3 -->
+        <blockquote class="bg-white rounded-xl p-6 shadow-md border border-amber-100 reveal" style="font-family: 'Inter', sans-serif;">
+          <p class="text-sm md:text-base">"The pastries pair perfectly with the dark roast. Friendly staff and great ambiance."</p>
+          <div class="mt-3 flex items-center gap-2 text-yellow-500" aria-label="Rating">
+            <span>★★★★★</span>
+          </div>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- GALLERY (Instagram-style) -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 reveal" aria-label="Gallery" style="font-family: 'Inter', sans-serif;">
+      <h2 class="text-2xl md:text-3xl font-serif text-center mb-4" style="font-family: 'ElegantSerif', serif;">Gallery</h2>
+      <div class="swiper-container reveal" style="width:100%; height:360px;">
+        <div class="swiper-wrapper h-full">
+          <div class="swiper-slide flex items-center justify-center bg-white/70 rounded-lg p-2">
+            <img src="https://images.unsplash.com/photo-1718459973508-28497c57af7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw2fHxsYXR0ZSUyMGFydCUyMGNsb3NlLXVwfGVufDB8MHx8fDE3NTY4NzMzNDd8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Latte art close-up" class="object-cover w-full h-full rounded-lg" />
+          </div>
+          <div class="swiper-slide flex items-center justify-center bg-white/70 rounded-lg p-2">
+            <img src="https://images.unsplash.com/photo-1535402493314-224e4004a07b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw2fHxjb2ZmZWUlMjBiZWFucyUyMGFuZCUyMGN1cHxlbnwwfDB8fHwxNzU2ODczMzQ3fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Roasted beans and cup" class="object-cover w-full h-full rounded-lg" />
+          </div>
+          <div class="swiper-slide flex items-center justify-center bg-white/70 rounded-lg p-2">
+            <img src="https://images.pexels.com/photos/6205773/pexels-photo-6205773.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Barista making pour-over" class="object-cover w-full h-full rounded-lg" />
+          </div>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-stone-800 text-gray-300 pt-8 pb-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Column 1: Brand & Socials -->
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-yellow-400">
+            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="text-xl font-serif" style="font-family: 'ElegantSerif', serif;">Brew Haven</span>
+        </div>
+        <p class="mb-3">Warm, artisanal coffee in a cozy, contemporary space. Sourced beans. Crafted with care.</p>
+        <div class="flex space-x-3 mt-2" aria-label="Social media">
+          <a href="#" aria-label="Instagram" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20">
+            <!-- Instagram Icon -->
+            <svg class="w-5 h-5 text-gray-100" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5zm0 2a3 3 0 00-3 3v10a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H7zm5 3a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6zM16.5 6a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20">
+            <!-- Facebook Icon -->
+            <svg class="w-5 h-5 text-gray-100" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 10-11.6 9.9v-7H8v-3h2.4V9.5C10.4 7 11.7 5.75 14.1 5.75c1.6 0 3.3.14 3.3.14v2.8h-1.86c-1.84 0-2.41 1.14-2.41 2.31V12h3.77l-.6 3h-3.17v7A10 10 0 0022 12z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-white/20">
+            <!-- Twitter Icon -->
+            <svg class="w-5 h-5 text-gray-100" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016.5 3a4.5 4.5 0 00-4.5 4.5c0 .35.04.69.11 1.02A12.94 12.94 0 013 4.15s-4 9 5 13a13 13 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A9.94 9.94 0 0023 3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <!-- Column 2: Quick Links -->
+      <div>
+        <h3 class="text-sm uppercase tracking-wider mb-2" style="font-family: 'Inter', sans-serif;">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="about.html" class="hover:underline">About</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+          <li><a href="cart.html" class="hover:underline">Cart</a></li>
+        </ul>
+      </div>
+      <!-- Column 3: Newsletter -->
+      <div>
+        <h3 class="text-sm uppercase tracking-wider mb-2" style="font-family: 'Inter', sans-serif;">Newsletter</h3>
+        <p class="text-sm mb-3">Get new brews, seasonal specials, and events in your inbox.</p>
+        <form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault(); alert('Subscribed! Welcome to Brew Haven newsletter.');">
+          <input type="email" placeholder="Email address" required class="w-full px-3 py-2 rounded-md bg-white text-gray-800 border border-gray-300" />
+          <button type="submit" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-md">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="border-amber-700 mx-auto my-6 w-11/12" />
+    <p class="text-center pb-4 text-sm">© 2025 Brew Haven. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Enable mobile menu close on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      }
+    });
+
+    // Init Swiper
+    window.addEventListener('load', () => {
+      const swiper = new Swiper('.swiper-container', {
+        spaceBetween: 12,
+        slidesPerView: 1.2,
+        loop: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }
+      });
+    });
+  </script>
+</body>
+</html>
