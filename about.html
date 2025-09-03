@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brew Haven | About</title>
+  <meta name="description" content="Learn the Brew Haven story, our passion for sourcing the best beans, and our commitment to craftsmanship." />
+  <style>@font-face { font-family: 'Inter'; src: url('#') format('woff2'); }</style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{fontFamily:{body:['Inter','system-ui']}}}}</script>
+</head>
+<body class="bg-amber-50 text-gray-800 min-h-screen">
+  <header class="w-full fixed top-0 left-0 right-0 bg-white/80 backdrop-filter backdrop-blur-lg shadow-sm z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2" aria-label="Brew Haven Home">
+        <span class="text-xl font-serif" style="font-family: 'ElegantSerif', serif;">Brew Haven</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="index.html" class="text-gray-700">Home</a>
+        <a href="menu.html" class="text-gray-700">Menu</a>
+        <a href="about.html" class="text-gray-700">About</a>
+        <a href="contact.html" class="text-gray-700">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-28 pb-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section aria-label="Our Story" class="reveal">
+      <h1 class="text-3xl font-serif mb-4" style="font-family: 'ElegantSerif', serif;">Our Story</h1>
+      <p class="mb-4">Brew Haven began with a simple belief: great coffee is about people, provenance, and patience. We travel the globe to source beans from small farms and cooperatives, roasted to celebrate each origin’s unique character. Our cafe is a warm, inviting space where you can slow down and savor every moment.</p>
+      <p>From seed to cup, we pursue quality, sustainability, and community in every pour.</p>
+    </section>
+  </main>
+
+  <footer class="bg-stone-800 text-gray-300 pt-8 pb-6 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xl font-serif" style="font-family: 'ElegantSerif', serif;">Brew Haven</span>
+        </div>
+        <p>Passion for the craft. Respect for the bean. A cozy home for coffee lovers.</p>
+      </div>
+      <div>
+        <h3 class="text-sm uppercase tracking-wider mb-2" style="font-family: 'Inter', sans-serif;">Quick Links</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="menu.html" class="hover:underline">Menu</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact</a></li>
+          <li><a href="cart.html" class="hover:underline">Cart</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm uppercase tracking-wider mb-2" style="font-family: 'Inter', sans-serif;">Newsletter</h3>
+        <p class="text-sm mb-3">Get updates on beans, roasts, and events.</p>
+        <form class="flex" onsubmit="event.preventDefault(); alert('Subscribed!');">
+          <input type="email" placeholder="Email" class="w-full px-3 py-2 rounded-md bg-white text-gray-800 border border-gray-300" />
+          <button class="bg-amber-600 text-white px-4 py-2 rounded-md ml-2">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="border-amber-700 mx-auto my-6 w-11/12" />
+    <p class="text-center pb-4 text-sm">© 2025 Brew Haven. All rights reserved.</p>
+  </footer>
+</body>
+</html>
